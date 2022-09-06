@@ -1,2 +1,54 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="card">
+  <h3 class="card-header">User List</h3>
+  <div class="card-body">
+    <div class="table_container">
+      <table id="dtBasicExample" class="table table-bordered table-sm" cellspacing="0" width="100%">
+        <thead class="thead-light">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone No</th>
+            <th>Address</th>
+            <th>Birthday</th>
+            <th>Role</th>
+            <th>Operation</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @users.each_with_index do |user, index| %>
+            <tr>
+              <td><%= index+1 %></td>
+              <td><%= link_to user.name, user %></td>
+              <td><%= user.email %></td>
+              <td><%= user.phone %></td>
+              <td><%= user.address %></td>
+              <td><%= user.birthday %></td>
+              <td><%= user.super_user_flag == true ? "Super User" : (user.role == '0' ? 'Admin' : 'User') %></td>
+              <td><%= button_to 'Destroy', user_path(user), method: 'delete', data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+            </div>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function () {
+  var dataTable = $('#dtBasicExample').DataTable({
+    "searching": false,
+    "ordering": false,
+    "bLengthChange": false,
+    "info": false,
+    "pageLength": 5,
+  });
+  dataTable.column(0).nodes().each( function (cell, i) {
+    cell.innerHTML = i+1;
+  });
+  $('.dataTables_length').addClass('bs-select');
+});
+</script>
+

@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+.edit-btn,
+.create-btn,
+.upload-btn {
+  margin-left: 10px;
+}
+
+.right-btn-group {
+  float: right;
+}
+
+.right-btn-group .edit-btn {
+  margin-left: 10px;
+}
+ .submit-btn-div {
+  width: 100%;
+  display: inline-block;
+  text-align: right;
+}

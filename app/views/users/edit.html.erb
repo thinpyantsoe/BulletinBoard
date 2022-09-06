@@ -1,0 +1,6 @@
+<div class="card">
+  <h2 class="card-header">Edit User</h2>
+  <div class="card-body">
+    <%= render "form", user: @user, url: edit_user_path(@user), method: :put, back: user_path %>
+  </div>
+</div>
