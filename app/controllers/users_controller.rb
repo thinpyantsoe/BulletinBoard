@@ -23,7 +23,11 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     @user_create = UserService.createUser(@user)
     if @user_create
-      redirect_to users_path
+      if current_user
+        redirect_to users_path
+      else
+        redirect_to login_path
+      end
     else
       render :new
     end

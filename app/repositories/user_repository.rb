@@ -39,5 +39,9 @@ class UserRepository
         def destroyUser(user)
             user.destroy
         end
+
+        def findByEmail(email)
+            @user = User.find_by(email: email)
+        end
     end
 end

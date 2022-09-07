@@ -13,16 +13,19 @@
         </li>          
     </ul>
     <ul class="navbar-nav my-sm-0">
-      <li class="nav-item">
-      <%= link_to "Add User", new_user_users_path , class:"nav-link" %>
-      </li>
+      <% if current_user.super_user_flag %>
+        <li class="nav-item">
+          <%= link_to "Add User", new_user_users_path , class:"nav-link" %>
+        </li>
+      <% end %>
       <li class="nav-item">
       <div class="dropdown show">
         <a class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          current user name
+          <%= current_user.name %>
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="left:-54px;">
-          <a class="dropdown-item" href="/users/<%= 7 %>/profile">Profile</a>
+          <a class="dropdown-item" href="/users/<%= current_user.id %>/profile">Profile</a>
+          <%= link_to "Log Out", logout_path , class:"dropdown-item" %>
         </div>
       </div>
       </li>

@@ -10,4 +10,9 @@ Rails.application.routes.draw do
       put :edit, to: 'users#update'
     end
   end
+
+  # Login
+  get 'login', to: 'login#login'
+  post 'login', to: 'login#actionlogin'
+  get 'logout', to: 'login#logout'
 end

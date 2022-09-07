@@ -12,7 +12,9 @@
             <th>Address</th>
             <th>Birthday</th>
             <th>Role</th>
-            <th>Operation</th>
+            <% if current_user.super_user_flag %>
+              <th>Operation</th>
+            <% end %>
           </tr>
         </thead>
 
@@ -26,7 +28,9 @@
               <td><%= user.address %></td>
               <td><%= user.birthday %></td>
               <td><%= user.super_user_flag == true ? "Super User" : (user.role == '0' ? 'Admin' : 'User') %></td>
-              <td><%= button_to 'Destroy', user_path(user), method: 'delete', data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+              <% if current_user.super_user_flag %>
+                <td><%= button_to 'Destroy', user_path(user), method: 'delete', data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+              <% end %>
             </div>
             </tr>
           <% end %>

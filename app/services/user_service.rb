@@ -39,5 +39,9 @@ class UserService
         def destroyUser(user)
             UserRepository.destroyUser(user)
         end
+
+        def findByEmail(email)
+            @user = UserRepository.findByEmail(email)
+        end
     end
 end
