@@ -7,7 +7,14 @@ Rails.application.routes.draw do
     end
     member do
       get :edit
-      put :edit, to: 'users#update'
+      put :edit, to: "users#update"
+    end
+  end
+
+  resources :posts, only: [:index, :show, :destroy] do
+    collection do
+      get :new_post, to: "posts#new"
+      post :new_post
     end
   end
 

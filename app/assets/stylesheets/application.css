@@ -30,8 +30,14 @@ table.table-bordered {
 .right-btn-group .edit-btn {
   margin-left: 10px;
 }
- .submit-btn-div {
+
+.submit-btn-div {
   width: 100%;
   display: inline-block;
   text-align: right;
+}
+
+.error-msg,
+span.error-msg {
+  color: red;
 }

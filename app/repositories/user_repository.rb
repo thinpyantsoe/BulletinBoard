@@ -4,7 +4,7 @@ class UserRepository
         # get all users
         # @return @users
         def getAllUsers
-            @users = User.all.order("id DESC")
+            @users = User.all.order("id ASC")
         end
 
         # function :createUser

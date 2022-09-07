@@ -26,12 +26,11 @@
               <td><%= user.email %></td>
               <td><%= user.phone %></td>
               <td><%= user.address %></td>
-              <td><%= user.birthday %></td>
+              <td><%= user.birthday.strftime('%Y/%m/%d') %></td>
               <td><%= user.super_user_flag == true ? "Super User" : (user.role == '0' ? 'Admin' : 'User') %></td>
               <% if current_user.super_user_flag %>
                 <td><%= button_to 'Destroy', user_path(user), method: 'delete', data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
               <% end %>
-            </div>
             </tr>
           <% end %>
         </tbody>
