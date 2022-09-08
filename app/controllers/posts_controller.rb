@@ -7,15 +7,14 @@ class PostsController < ApplicationController
     @posts = PostService.getAllPosts
   end
 
-  # function : new
+  # function :new
   # show create post page
   # @return @post
   def new
-    add_breadcrumb "Add Post", :new_post_posts_path
     @post = Post.new
   end
 
-  # function : new_post
+  # function :new_post
   # post create
   # @return @post_create
   def new_post
@@ -28,16 +27,34 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
+  # function :edit
+  # edit post
+  # @return @post
+  def edit
+    @post = PostService.getPostByID(params[:id])
   end
 
-  def edit    
-  end
-
+  # function :update
+  # update post
+  # @return @post
   def update
+    @post = PostService.getPostByID(params[:id])
+    @post_update = PostService.updatePost(@post, post_params)
+    if @post_update
+      redirect_to posts_path
+    else
+      render :edit
+    end
   end
 
+  # function :destroy
+  # delete post
+  # @return [<Type>]
   def destroy
+    @post = PostService.getPostByID(params[:id])
+    PostService.postDestroy(@post)
+    flash[:notice] = "Post has been deleted"
+    redirect_to posts_path
   end
 
   private

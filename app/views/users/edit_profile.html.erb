@@ -1,0 +1,6 @@
+<div class="card">
+  <h3 class="card-header">Edit Profile</h3>
+  <div class="card-body">
+    <%= render "form", user: @user, url: update_profile_users_path(@user), method: :put, back: profile_users_path %>
+  </div>
+</div>

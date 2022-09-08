@@ -1,9 +1,6 @@
 <div class="card">
   <h3 class="card-header">Post List</h3>
   <div class="card-body">
-    <div class="field form-group row float-right">
-      <%= link_to "Add Post", new_post_posts_path,  class: 'btn btn-primary mr-2' %>
-    </div>
     <div class="table_container">
       <table id="list" class="table table-bordered table-sm" cellspacing="0" width="100%">
         <thead class="thead-light">
@@ -11,6 +8,9 @@
             <th>Post Title</th>
             <th>Post Description</th>
             <th>Posted Date</th>
+            <% if current_user.super_user_flag %>
+              <th></th>
+            <% end %>
           </tr>
         </thead>
 
@@ -20,10 +20,21 @@
               <td><%= post.title %></td>
               <td><%= post.description %></td>
               <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+              <% if current_user.super_user_flag %>
+                <td>
+                  <div class="btn-group">
+                    <%= link_to "Edit", edit_post_path(post), class: 'btn btn-sm btn-edit'  %>
+                    <%= button_to "Delete", post_path(post), method: 'delete', data: { confirm: 'Are your sure?' }, class: "btn btn-sm btn-danger delete-btn" %>
+                  </div>
+                </td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
       </table>
+    </div>
+    <div class="field form-group row float-right">
+      <%= link_to "Add Post", new_post_posts_path,  class: 'btn btn-primary btn-create mr-3' %>
     </div>
   </div>
 </div>

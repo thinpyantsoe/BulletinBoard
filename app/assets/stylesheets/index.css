@@ -1,0 +1,35 @@
+.navbar {
+  background-color: #499b9b;
+  letter-spacing: 3px;
+  opacity: 0.9;
+}
+
+.navbar li a, .navbar .navbar-brand { 
+  color: #fff !important;
+}
+
+.navbar-nav li a:hover {
+  color: #fff !important;
+}
+
+.navbar-nav li.active a {
+  color: #fff !important;
+  background-color: #499b9b !important;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+}
+
+.open .dropdown-toggle {
+  color: #fff;
+  background-color: #555 !important;
+}
+
+.dropdown-menu li a {
+  color: #499b9b !important;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #499b9b !important;
+}

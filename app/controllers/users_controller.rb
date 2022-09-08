@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  add_breadcrumb "User List", :users_path
-
   # function :index
   # show user list
   # @return @users
@@ -12,7 +10,6 @@ class UsersController < ApplicationController
   # show create user page
   # @return @user
   def new
-    add_breadcrumb "Create User", :new_user_users_path
     @user = User.new
   end
 
@@ -37,7 +34,6 @@ class UsersController < ApplicationController
   # show user detail
   # @return @user
   def show
-    add_breadcrumb "User Detail", :user_path
     @user = UserService.getUserByID(params[:id])
   end
 
@@ -45,8 +41,6 @@ class UsersController < ApplicationController
   # show user edit
   # @return @user
   def edit
-    add_breadcrumb "User Detail", :user_path
-    add_breadcrumb "Edit User", :edit_user_path
     @user = UserService.getUserByID(params[:id])
   end
 
@@ -71,6 +65,31 @@ class UsersController < ApplicationController
     params[:id] = nil
     flash[:notice] = "User has been deleted"
     redirect_to users_path
+  end
+
+  def profile
+    @user = current_user
+  end
+
+  def edit_profile
+    @user = current_user
+  end
+
+  def update_profile
+    @user = current_user
+    @update_profile = UserService.updateUser(@user, user_params)
+    if @update_profile
+      redirect_to profile_users_path
+    else
+      redirect_to :edit_profile
+    end
+  end
+
+  def edit_password
+  end
+
+  def update_password
+    
   end
 
   private

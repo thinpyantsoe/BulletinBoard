@@ -18,9 +18,31 @@ table.table-bordered {
 }
 
 .edit-btn,
+.upload-btn,
 .create-btn,
-.upload-btn {
+.delete-btn {
   margin-left: 10px;
+}
+
+.btn-create,
+.create-btn {
+  background-color: #00b7b7 !important;
+  border-color: #00b7b7 !important;
+}
+
+.btn-create:hover,
+.btn-create:focus {
+  text-decoration: none;
+  background-color: #00b7b7;
+  color: #fff;
+}
+
+.btn-edit {
+  border: 1px solid #00b7b7;
+  color: #00b7b7 !important;
+  background-color: #fff;
+  border-radius: 3px !important;
+  font-size: 14px;
 }
 
 .right-btn-group {
@@ -40,4 +62,92 @@ table.table-bordered {
 .error-msg,
 span.error-msg {
   color: red;
+}
+
+/* post list */
+.posts-nav {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.posts-nav .post-filter,
+.posts-nav .post-search,
+.posts-nav .post-count {
+  display: inline-block;
+}
+
+.posts-nav .post-filter-div {
+  width: 200px;
+  display: inline-block;
+  background-color: #fff;
+}
+
+.posts-nav .post-filter-div .form-control {
+  display: inline-block;
+  width: 80%;
+  border: none;
+}
+
+.posts-nav .post-filter-div .search-icon {
+  float: right;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.post-nav .post-filter-div .search {
+  display: inline-block;
+}
+
+.posts-nav .btn {
+  float: right;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.clearfix:before {
+  display: table;
+  content: " ";
+}
+
+.post-list-wrapper {
+  margin: 0 0 20px;
+  /* border: 1px solid #52a9ac; */
+  border-radius: 1px;
+  box-shadow: 3px 3px 7px rgb(0 0 0 / 30%);
+}
+
+.post-list-wrapper .card-header {
+  padding: 10px;
+  background-color: #52a9ac;
+  display: block;
+}
+
+.post-list-wrapper .card-header h5 {
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.post-list-wrapper .card-header h5 .icon-flag {
+  margin-top: 5px;
+}
+
+.post-list-wrapper .card-header .last-modified-date {
+  color: #fff;
+  font-size: 12px;
+}
+
+.post-list-wrapper .card-body {
+  background-color: #fff;
+  padding: 10px;
+  display: inline-block;
+  width: 100%;
+  word-break: break-all;
+}
+
+.post-list-wrapper .card-body p {
+  text-indent: 80px;
 }

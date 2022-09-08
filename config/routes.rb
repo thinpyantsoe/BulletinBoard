@@ -4,6 +4,11 @@ Rails.application.routes.draw do
     collection do
       get :new_user, to: "users#new"
       post :new_user
+      get :profile
+      get :edit_profile
+      put :update_profile, to: "users#update_profile"
+      get :edit_password
+      put :update_password, to: "users#update_password"
     end
     member do
       get :edit
@@ -11,10 +16,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts, only: [:index, :show, :destroy] do
+  resources :posts, only: [:index, :destroy] do
     collection do
       get :new_post, to: "posts#new"
       post :new_post
+    end
+    member do
+      get :edit
+      put :edit, to: "posts#update"
     end
   end
 
