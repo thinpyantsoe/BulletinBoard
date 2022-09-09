@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authorized
 
   # function :index
   # show post list

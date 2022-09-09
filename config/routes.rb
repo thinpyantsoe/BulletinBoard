@@ -7,8 +7,6 @@ Rails.application.routes.draw do
       get :profile
       get :edit_profile
       put :update_profile, to: "users#update_profile"
-      get :edit_password
-      put :update_password, to: "users#update_password"
     end
     member do
       get :edit
@@ -31,4 +29,8 @@ Rails.application.routes.draw do
   get 'login', to: 'login#login'
   post 'login', to: 'login#actionlogin'
   get 'logout', to: 'login#logout'
+
+  # Password
+  get 'change_password', to: 'password#change_password'
+  patch 'update_password', to: 'password#update_password'
 end

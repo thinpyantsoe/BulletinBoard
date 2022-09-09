@@ -4,7 +4,7 @@ class User < ApplicationRecord
     validates :email, presence: true, length: { maximum: 255 },
                 format: { with: Constants::VALID_EMAIL_REGEX },
                 uniqueness: { case_sensitive: false }
-    validates :password, confirmation: true, presence: true,on: :create
+    validates :password, confirmation: true, presence: true, on: :create
     validates :phone, numericality: true, length: { minimum: 9, maximum: 12 },
                 allow_blank: true
     validates :address, length: {maximum: 255}, allow_blank: true

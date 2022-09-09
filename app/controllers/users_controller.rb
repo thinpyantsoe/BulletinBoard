@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authorized
+
   # function :index
   # show user list
   # @return @users
@@ -57,7 +59,8 @@ class UsersController < ApplicationController
     end
   end
 
-  # function destroy
+  # function :destroy
+  # action delete user
   # @return [<Type>] <description>
   def destroy
     @user = UserService.getUserByID(params[:id])
@@ -67,14 +70,23 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  # function :profile
+  # user profile detail
+  # @return [<Type>] <description>
   def profile
     @user = current_user
   end
 
+  # function :edit_profile
+  # edit profile
+  # @return [<Type>] <description>
   def edit_profile
     @user = current_user
   end
 
+  # function :update_profile
+  # action update profile
+  # @return [<Type>] <description>
   def update_profile
     @user = current_user
     @update_profile = UserService.updateUser(@user, user_params)
@@ -83,13 +95,6 @@ class UsersController < ApplicationController
     else
       redirect_to :edit_profile
     end
-  end
-
-  def edit_password
-  end
-
-  def update_password
-    
   end
 
   private
