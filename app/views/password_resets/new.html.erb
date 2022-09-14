@@ -1,0 +1,14 @@
+<div class="card">
+  <h3 class="card-header">Reset Password</h3>
+  <div class="card-body">
+    <%= form_tag password_resets_path, :method => :post do %>
+      <div class="field form-group row">
+        <%= label_tag :email, 'Email', class:"col-sm-2 col-form-label"  %>
+        <%= text_field_tag :email, params[:email], class:"form-control col-sm-5" %>
+      </div>
+      <div class="submit-btn-div text-center">
+        <%= submit_tag "Reset Password", class:"btn btn-info create-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

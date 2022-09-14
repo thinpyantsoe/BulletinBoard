@@ -7,4 +7,13 @@ module Messages
 
     # password change message
     PASSWORD_AND_CONFIRM_PASSWORD_NOT_THE_SAME = "Password and Confirm Password must be the same."
+    PASSWORD_AND_CONFIRM_PASSWORD_REQUIRED = "Both Password and Confirm Password are required."
+    PASSWORD_CONFIRMATION_REQUIRED = "Password Confirm Password is required."
+
+    # password reset message
+    EMAIL_NOT_EXIST = "Email address not found. Please check."
+    PASSWORD_RESET_SENT = "Email send with password reset instructions."
+    PASSWORD_RESET_URL_EXPIRED = "The URL you accessed has expired."
+    URL_INCORRECT = "The URL you accessed is incorrect."
+    PASSWORD_RESET_COMPLETE = "Password reset is completed."
 end

@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :password_resets
+
   # Login
   get 'login', to: 'login#login'
   post 'login', to: 'login#actionlogin'
