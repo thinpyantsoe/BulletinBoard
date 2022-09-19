@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # show user list
   # @return @users
   def index
-   @users = UserService.getAllUsers
+    @users = UserService.getAllUsers
   end
 
   # function : new
@@ -21,15 +21,8 @@ class UsersController < ApplicationController
   def new_user
     @user = User.create(user_params)
     @user_create = UserService.createUser(@user)
-    if @user_create
-      if current_user
-        redirect_to users_path
-      else
-        redirect_to login_path
-      end
-    else
-      render :new
-    end
+    render :new unless @user_create
+    redirect_to users_path
   end
 
   # function :show
@@ -65,8 +58,7 @@ class UsersController < ApplicationController
   def destroy
     @user = UserService.getUserByID(params[:id])
     UserService.destroyUser(@user)
-    flash[:notice] = "User has been deleted"
-    redirect_to users_path
+    redirect_to users_path, notice: Messages::USER_DELETE_SUCCESSFUL
   end
 
   # function :profile
@@ -97,10 +89,12 @@ class UsersController < ApplicationController
   end
 
   private
+
   # set user parameters for create
   # @return [<Type>] <description>
   def user_params
-    params.require(:user).permit(:id, :name, :email, :password, :password_confirmation, :phone, :address, :birthday, :super_user_flag, :role)
+    params.require(:user).permit(:id, :name, :email, :password, :password_confirmation, :phone, :address, :birthday,
+                                 :super_user_flag, :role)
   end
 
   # set user parameters for update

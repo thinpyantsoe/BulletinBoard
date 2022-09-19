@@ -1,5 +1,4 @@
 class LoginController < ApplicationController
-
   # function :login
   # show login page
   def login

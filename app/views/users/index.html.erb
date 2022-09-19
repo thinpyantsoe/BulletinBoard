@@ -13,7 +13,7 @@
             <th>Birthday</th>
             <th>Type</th>
             <% if current_user.super_user_flag %>
-              <th></th>
+            <th></th>
             <% end %>
           </tr>
         </thead>
@@ -29,7 +29,9 @@
               <td><%= user.birthday.strftime('%Y/%m/%d') %></td>
               <td><%= user.super_user_flag == true ? 'Admin' : 'User' %></td>
               <% if current_user.super_user_flag %>
-                <td class="text-center"><%= button_to 'Destroy', user_path(user), method: 'delete', data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
+                <td class="text-center">
+                  <%= button_to 'Destroy', user_path(user), method: 'delete', data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+                </td>
               <% end %>
             </tr>
           <% end %>
@@ -45,18 +47,17 @@
 </div>
 
 <script>
-$(document).ready(function () {
-  var dataTable = $('#dtBasicExample').DataTable({
-    "searching": false,
-    "ordering": false,
-    "bLengthChange": false,
-    "info": false,
-    "pageLength": 5,
+  $(document).ready(function () {
+    var dataTable = $('#dtBasicExample').DataTable({
+      "searching": false,
+      "ordering": false,
+      "bLengthChange": false,
+      "info": false,
+      "pageLength": 5,
+    });
+    dataTable.column(0).nodes().each(function (cell, i) {
+      cell.innerHTML = i + 1;
+    });
+    $('.dataTables_length').addClass('bs-select');
   });
-  dataTable.column(0).nodes().each( function (cell, i) {
-    cell.innerHTML = i+1;
-  });
-  $('.dataTables_length').addClass('bs-select');
-});
 </script>
-

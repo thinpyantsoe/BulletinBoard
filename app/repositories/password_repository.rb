@@ -1,6 +1,5 @@
 class PasswordRepository
   class << self
-
     # function :updatePassword
     # action update password
     # @return [<TYpe>]

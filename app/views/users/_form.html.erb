@@ -27,8 +27,8 @@
       <%= form.label :password_confirmation, "Confirm Password", class: "col-sm-2 col-form-label required" %><br>
       <%= form.password_field :password_confirmation, class: "form-control col-sm-5" %>
       <% if user.errors[:password_confirmation].any? %>
-        <span style="color:red;">Confirm Password <%= user.errors[:password_confirmation][0] %>
-      <% end %>
+      <span style="color:red;">Confirm Password <%= user.errors[:password_confirmation][0] %>
+        <% end %>
     </div>
   <% end %>
 

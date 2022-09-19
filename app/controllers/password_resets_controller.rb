@@ -1,9 +1,7 @@
 class PasswordResetsController < ApplicationController
-
   # function :new
   #
-  def new
-  end
+  def new; end
 
   # function :create
   #
@@ -24,9 +22,7 @@ class PasswordResetsController < ApplicationController
   def edit
     @user = User.find_by_password_reset_token!(params[:id])
     # fix need
-    if @user.blank?
-      redirect_to login_path, notice: Messages::URL_INCORRECT
-    end
+    redirect_to login_path, notice: Messages::URL_INCORRECT if @user.blank?
   end
 
   # function :update
@@ -44,22 +40,22 @@ class PasswordResetsController < ApplicationController
     else
       @user = User.find_by_password_reset_token!(params[:id])
       if @user.password_reset_sent_at < 2.hour.ago
-        redirect_to new_password_reset_path, :notice => Messages::PASSWORD_RESET_URL_EXPIRED
+        redirect_to new_password_reset_path, notice: Messages::PASSWORD_RESET_URL_EXPIRED
       else
         @is_reset_password = @user.update(user_params)
         if @is_reset_password
-          redirect_to login_path, :notice => Messages::PASSWORD_RESET_COMPLETE
+          redirect_to login_path, notice: Messages::PASSWORD_RESET_COMPLETE
         else
           render :edit
         end
       end
     end
   end
-  
-  private
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:password)
-    end
 
+  private
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:password)
+  end
 end

@@ -15,9 +15,7 @@ class PasswordController < ApplicationController
     else
       @user = current_user
       @is_update_password = PasswordService.updatePassword(@user, params[:user][:password])
-      if @is_update_password
-        redirect_to profile_users_path
-      end
+      redirect_to profile_users_path if @is_update_password
     end
   end
 end

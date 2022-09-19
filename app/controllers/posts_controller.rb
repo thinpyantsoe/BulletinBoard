@@ -55,8 +55,7 @@ class PostsController < ApplicationController
   def destroy
     @post = PostService.getPostByID(params[:id])
     PostService.postDestroy(@post)
-    flash[:notice] = "Post has been deleted"
-    redirect_to posts_path
+    redirect_to posts_path, notice: Messages::POST_DEELTE_SUCCESSFUL
   end
 
   # function :search
@@ -87,7 +86,7 @@ class PostsController < ApplicationController
     @posts = PostService.getAllPosts(current_user)
     respond_to do |format|
       format.html
-      format.csv { send_data Post.to_csv, filename: "posts-#{DateTime.now.strftime("%d%m%Y")}.csv"}
+      format.csv { send_data Post.to_csv, filename: "posts-#{DateTime.now.strftime('%d%m%Y')}.csv" }
     end
   end
 
@@ -98,29 +97,29 @@ class PostsController < ApplicationController
     @post = Post.new
     respond_to do |format|
       format.html
-      format.csv { send_data @post.csv_format, filename: "CSV Format.csv" }
+      format.csv { send_data @post.csv_format, filename: 'CSV Format.csv' }
     end
   end
 
   # function :upload_csv
   # post csv upload
   # @return csv upload
-  def upload_csv
-  end
+  def upload_csv; end
 
   # function :import_csv
   # post import csv
   # @return [<Type>]
   def import_csv
-    if (params[:file].nil?)
+    if params[:file].nil?
       redirect_to upload_csv_posts_path, notice: Messages::REQUIRE_FILE_VALIDATION
     else
-      myfile = Post.import(params[:file], current_user.id)
+      Post.import(params[:file], current_user.id)
       redirect_to posts_path, notice: Messages::UPLOAD_SUCCESSFUL #=> or where you want
     end
   end
 
   private
+
   # set post parameters
   # @return [<Type>] <description>
   def post_params
