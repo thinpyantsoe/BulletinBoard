@@ -16,4 +16,8 @@ module Messages
     PASSWORD_RESET_URL_EXPIRED = "The URL you accessed has expired."
     URL_INCORRECT = "The URL you accessed is incorrect."
     PASSWORD_RESET_COMPLETE = "Password reset is completed."
+
+    # csv file validation message
+    REQUIRE_FILE_VALIDATION = "Please choose a file."
+    UPLOAD_SUCCESSFUL = "CSV file uploaded is successfully."
 end

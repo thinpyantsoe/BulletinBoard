@@ -11,7 +11,7 @@
             <th>Phone No</th>
             <th>Address</th>
             <th>Birthday</th>
-            <th>Role</th>
+            <th>Type</th>
             <% if current_user.super_user_flag %>
               <th></th>
             <% end %>
@@ -27,7 +27,7 @@
               <td><%= user.phone %></td>
               <td><%= user.address %></td>
               <td><%= user.birthday.strftime('%Y/%m/%d') %></td>
-              <td><%= user.super_user_flag == true ? "Super User" : (user.role == '0' ? 'Admin' : 'User') %></td>
+              <td><%= user.super_user_flag == true ? 'Admin' : 'User' %></td>
               <% if current_user.super_user_flag %>
                 <td class="text-center"><%= button_to 'Destroy', user_path(user), method: 'delete', data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
               <% end %>
@@ -36,9 +36,11 @@
         </tbody>
       </table>
     </div>
-    <div class="field form-group row float-right mt-2">
-      <%= link_to "Add User", new_user_users_path,  class: 'btn btn-primary btn-create mr-3' %>
-    </div>
+    <% if current_user.super_user_flag %>
+      <div class="field form-group row float-right mt-2">
+        <%= link_to "Add User", new_user_users_path,  class: 'btn btn-primary btn-create mr-3' %>
+      </div>
+    <% end %>
   </div>
 </div>
 

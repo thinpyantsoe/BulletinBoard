@@ -3,8 +3,8 @@ class PostRepository
         # function :getAllPosts
         # get all posts
         # @return @posts
-        def getAllPosts
-            @posts = Post.all.order('id ASC')
+        def getAllPosts(current_user)
+            @posts = Post.where(user_id: current_user.id).order('id ASC')
         end
 
         # function :createPost
@@ -32,7 +32,29 @@ class PostRepository
         # function :postDestory
         # @return [<Type>] <description>
         def postDestroy(post)
-            post.destroy
+          post.destroy
+        end
+
+        # function :postSearch
+        #
+        # @return [<Type>] <description>
+        def postSearch(keyword)
+          @posts = Post.where("title LIKE ?", "%#{keyword}%")
+        end
+
+        # function :postFilter
+        #
+        # @return [<Type>] <description>
+        def postFilter(filter, current_user_id)
+            Rails.logger.info filter
+            case filter 
+            when '1' 
+                @posts = Post.all.order('id ASC')
+            when '2'
+                @posts = Post.where(user_id: current_user_id).order('id ASC')
+            when '3'
+                @posts = Post.where.not(user_id: current_user_id).order('id ASC')
+            end
         end
     end
 end

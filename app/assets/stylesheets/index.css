@@ -8,6 +8,10 @@
   color: #fff !important;
 }
 
+.navbar .mr-74 {
+  margin-right: 74%;
+}
+
 .navbar-nav li a:hover {
   color: #fff !important;
 }

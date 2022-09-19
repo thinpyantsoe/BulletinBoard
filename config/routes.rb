@@ -18,6 +18,12 @@ Rails.application.routes.draw do
     collection do
       get :new_post, to: "posts#new"
       post :new_post
+      get :search
+      get :filter
+      get :download_csv
+      get :csv_format
+      get :upload_csv
+      post :import_csv
     end
     member do
       get :edit

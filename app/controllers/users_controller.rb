@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   # @return <redirect>
   def update
     @user = UserService.getUserByID(params[:id])
-    @user_update = UserService.updateUser(@user, user_params)
+    @user_update = UserService.updateUser(@user, update_user_params)
     if @user_update
       redirect_to @user
     else
@@ -65,7 +65,6 @@ class UsersController < ApplicationController
   def destroy
     @user = UserService.getUserByID(params[:id])
     UserService.destroyUser(@user)
-    params[:id] = nil
     flash[:notice] = "User has been deleted"
     redirect_to users_path
   end
@@ -89,7 +88,7 @@ class UsersController < ApplicationController
   # @return [<Type>] <description>
   def update_profile
     @user = current_user
-    @update_profile = UserService.updateUser(@user, user_params)
+    @update_profile = UserService.updateUser(@user, update_user_params)
     if @update_profile
       redirect_to profile_users_path
     else
@@ -98,9 +97,15 @@ class UsersController < ApplicationController
   end
 
   private
-  # set user parameters
+  # set user parameters for create
   # @return [<Type>] <description>
   def user_params
     params.require(:user).permit(:id, :name, :email, :password, :password_confirmation, :phone, :address, :birthday, :super_user_flag, :role)
+  end
+
+  # set user parameters for update
+  # @return [<Type>] <description>
+  def update_user_params
+    params.require(:user).permit(:id, :name, :email, :phone, :address, :birthday, :super_user_flag, :role)
   end
 end

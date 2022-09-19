@@ -47,13 +47,15 @@
       <label class="col-sm-2 col-form-label">Type</label>
       <div class="col-sm-10">
         <label class="col-sm-10 col-form-label">
-        <%= @user.super_user_flag == true ? "Super User" :  (@user.role == 1 ? 'Level1 User' : 'Level2 User') %>
+        <%= @user.super_user_flag == true ? 'Admin' : 'User'  %>
       </div>
     </div>
 
     <div class="right-btn-group">
       <%= link_to 'Back', users_path , class:"btn btn-dark" %>
-      <%= link_to "Edit", edit_user_path(@user), class: "btn btn-info edit-btn" %>
+      <% if current_user.super_user_flag %>
+        <%= link_to "Edit", edit_user_path(@user), class: "btn btn-info edit-btn" %>
+      <% end %>
       </div>
     </div>
   </div>

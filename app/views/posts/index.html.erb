@@ -1,6 +1,26 @@
-<div class="card">
+<div class="card list-wrapper">
   <h3 class="card-header">Post List</h3>
   <div class="card-body">
+      <div class="field form-group float-left search-group">
+        <%= form_with class: "post-search", url: search_posts_path, method: :get do |form| %>
+          <div class="post-search-div">
+            <%= form.text_field :keyword, class: "form-control py-2 border-right-0 border", value: @old_search_keyword %>
+            <span class="btn border-left-0 border">
+              <i class="icon-search"></i>
+            </span>
+          </div>
+        <% end %>
+      </div>
+      <div class="field form-group row float-right mr-1">
+        <%= form_with class: "mr-2", url: filter_posts_path, method: :get do |form| %>
+          <%= form.select(:filter, options_for_select(Constants::POST_FILTER, @old_filter ? @old_filter : ''), {}, {:class => "form-control", onchange: 'this.form.submit()'})%>
+        <% end %>
+        <% if current_user.super_user_flag %>
+          <%= link_to "Create", new_post_posts_path,  class: 'btn btn-primary mr-2' %>
+          <%= link_to "Download", download_csv_posts_path(format: 'csv'), class: 'btn btn-primary mr-2' %>
+          <%= link_to "Upload",  upload_csv_posts_path, class: 'btn btn-primary' %>
+        <% end %>
+      </div>
     <div class="table_container">
       <table id="list" class="table table-bordered table-sm" cellspacing="0" width="100%">
         <thead class="thead-light">
@@ -18,7 +38,7 @@
           <% @posts.each do |post| %>
             <tr>
               <td><%= post.title %></td>
-              <td><%= post.description %></td>
+              <td class="word-break"><%= post.description %></td>
               <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
               <% if current_user.super_user_flag %>
                 <td>
@@ -32,9 +52,6 @@
           <% end %>
         </tbody>
       </table>
-    </div>
-    <div class="field form-group row float-right">
-      <%= link_to "Add Post", new_post_posts_path,  class: 'btn btn-primary btn-create mr-3' %>
     </div>
   </div>
 </div>

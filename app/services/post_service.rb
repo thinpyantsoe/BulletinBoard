@@ -3,8 +3,8 @@ class PostService
         # function :getAllPosts
         # get all posts
         # @return @posts
-        def getAllPosts
-            @posts = PostRepository.getAllPosts
+        def getAllPosts(current_user)
+            @posts = PostRepository.getAllPosts(current_user)
         end
 
         # function :createPost
@@ -33,6 +33,18 @@ class PostService
         # @return [<Type>] <description>
         def postDestroy(post)
             PostRepository.postDestroy(post)
+        end
+
+        # function :postSearch
+        # @return @posts
+        def postSearch(keyword)
+            @posts = PostRepository.postSearch(keyword)
+        end
+
+        # function :postFilter
+        # @return @posts
+        def postFilter(filter, current_user_id)
+            @posts = PostRepository.postFilter(filter, current_user_id)
         end
     end
 end

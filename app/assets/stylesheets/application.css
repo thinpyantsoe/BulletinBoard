@@ -71,35 +71,35 @@ span.error-msg {
   margin-bottom: 20px;
 }
 
-.posts-nav .post-filter,
-.posts-nav .post-search,
-.posts-nav .post-count {
+.post-filter,
+.post-search,
+.post-count {
   display: inline-block;
 }
 
-.posts-nav .post-filter-div {
+.post-search-div {
   width: 200px;
   display: inline-block;
   background-color: #fff;
 }
 
-.posts-nav .post-filter-div .form-control {
+.post-search-div .form-control {
   display: inline-block;
   width: 80%;
   border: none;
 }
 
-.posts-nav .post-filter-div .search-icon {
+.post-search-div .search-icon {
   float: right;
   padding: 10px;
   cursor: pointer;
 }
 
-.post-nav .post-filter-div .search {
+.post-nav .post-search-div .search {
   display: inline-block;
 }
 
-.posts-nav .btn {
+.post-search-div .btn {
   float: right;
 }
 
@@ -112,42 +112,30 @@ span.error-msg {
   content: " ";
 }
 
-.post-list-wrapper {
+.list-wrapper {
   margin: 0 0 20px;
   /* border: 1px solid #52a9ac; */
   border-radius: 1px;
   box-shadow: 3px 3px 7px rgb(0 0 0 / 30%);
 }
 
-.post-list-wrapper .card-header {
-  padding: 10px;
-  background-color: #52a9ac;
-  display: block;
-}
-
-.post-list-wrapper .card-header h5 {
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 0;
-}
-
-.post-list-wrapper .card-header h5 .icon-flag {
-  margin-top: 5px;
-}
-
-.post-list-wrapper .card-header .last-modified-date {
-  color: #fff;
-  font-size: 12px;
-}
-
-.post-list-wrapper .card-body {
+.list-wrapper .card-body {
   background-color: #fff;
   padding: 10px;
   display: inline-block;
   width: 100%;
-  word-break: break-all;
 }
 
-.post-list-wrapper .card-body p {
+.list-wrapper .card-body p {
   text-indent: 80px;
+}
+
+.search-group {
+  position: relative;
+  display: flex;
+  max-width: 33%;
+}
+
+.word-break {
+  word-break: break-all;
 }
