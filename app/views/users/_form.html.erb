@@ -58,10 +58,10 @@
 
   <div class="field form-group row">
     <%= form.label :super_user_flag, "Create as", class: "col-sm-2 col-form-label" %><br />
-    <%= form.radio_button :super_user_flag, true, class: "super-user-flag" %>
-    <%= form.label :super_user_flag, "Admin", :value => "true", class: "form-check-label" %><br>
-    <%= form.radio_button :super_user_flag, false, class: "super-user-flag" %>
-    <%= form.label :super_user_flag, "User", :value => "false" %>
+    <%= form.radio_button :super_user_flag, true, class: "super-user-flag mr-1" %>
+    <%= form.label :super_user_flag, "Admin", :value => "true", class: "form-check-label mt-2 mr-3" %><br>
+    <%= form.radio_button :super_user_flag, false, class: "super-user-flag mr-1" %>
+    <%= form.label :super_user_flag, "User", :value => "false", class: "form-check-label mt-2" %>
     <% if user.errors[:super_user_flag].any? %>
       <span style="color:red;">User Type <%= user.errors[:super_user_flag][0] %>
     <% end %>
